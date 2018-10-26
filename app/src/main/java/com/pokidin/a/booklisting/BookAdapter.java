@@ -10,10 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookAdapter extends ArrayAdapter<Book> {
     public static final String TAG = BookAdapter.class.getSimpleName();
-
 
 
     public BookAdapter(@NonNull Activity context, ArrayList<Book> books) {
@@ -25,7 +25,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View listItemView = convertView;
-        if (listItemView == null){
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         Book currentBook = getItem(position);
@@ -42,8 +42,19 @@ public class BookAdapter extends ArrayAdapter<Book> {
         descriptionTextView.setText(currentBook.getDescription());
 
         TextView authorsTextView = listItemView.findViewById(R.id.tv_authors);
-//        authorsTextView.setText(currentBook.getAuthors());
+        authorsTextView.setText(formatAuthors(currentBook.getAuthors()));
 
         return listItemView;
+    }
+
+    private String formatAuthors(List<String> authors) {
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < authors.size(); i++) {
+            buffer.append(authors.get(i));
+            if (i != authors.size() - 1) {
+                buffer.append(", ");
+            }
+        }
+        return String.valueOf(buffer);
     }
 }

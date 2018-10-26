@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Book> fakeBooks = new ArrayList<>();
         ArrayList<String> authors = new ArrayList<>();
-        authors.add("author");
+        authors.add("author101");
+        authors.add("author202");
+        authors.add("author303");
         fakeBooks.add(new Book("title00", "publisher", 101, "description", authors));
         fakeBooks.add(new Book("title01", "publisher", 101, "description", authors));
         fakeBooks.add(new Book("title02", "publisher", 101, "description", authors));
