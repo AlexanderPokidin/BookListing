@@ -1,5 +1,8 @@
 package com.pokidin.a.booklisting;
 
+import android.app.LoaderManager;
+import android.content.Loader;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BookActivity extends AppCompatActivity {
+public class BookActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Book>> {
     public static final String TAG = BookActivity.class.getSimpleName();
+    private static final String BOOK_REQUEST_URL = "https://www.googleapis.com/books/v1/volumes";
+    private static final int BOOK_LOADER_ID = 1;
+
+    private static final String SEARCH_WORD = "Android";
+    private static final String SEARCH_NUMBER = "10";
 
     private BookAdapter mBookAdapter;
 
@@ -21,7 +30,7 @@ public class BookActivity extends AppCompatActivity {
 
         ListView bookListView = findViewById(R.id.list);
 
-        mBookAdapter = new BookAdapter(this, createBooks());
+        mBookAdapter = new BookAdapter(this, new ArrayList<Book>());
         bookListView.setAdapter(mBookAdapter);
 
         bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -30,6 +39,9 @@ public class BookActivity extends AppCompatActivity {
                 Book currentBook = mBookAdapter.getItem(position);
             }
         });
+
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.initLoader(BOOK_LOADER_ID, null, this);
     }
 
     // Create a fake list of books
@@ -52,5 +64,27 @@ public class BookActivity extends AppCompatActivity {
         fakeBooks.add(new Book("title09", "publisher", "202", "description", authors));
 
         return fakeBooks;
+    }
+
+
+    @Override
+    public Loader<List<Book>> onCreateLoader(int id, Bundle args) {
+        Uri baseUri = Uri.parse(BOOK_REQUEST_URL);
+        Uri.Builder builder = baseUri.buildUpon();
+        builder.appendQueryParameter("q", SEARCH_WORD);
+        builder.appendQueryParameter("maxResults", SEARCH_NUMBER);
+        return new BookLoader(this, baseUri.toString());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<Book>> loader, List<Book> data) {
+        mBookAdapter.addAll(data);
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<Book>> loader) {
+        mBookAdapter.clear();
+
     }
 }

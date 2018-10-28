@@ -50,7 +50,7 @@ public class BookJsonParser {
         return books;
     }
 
-    private static List<Book> fetchBookData(String requestUrl) {
+    static List<Book> fetchBookData(String requestUrl) {
 
         URL url = BookHttpClient.createUrl(requestUrl);
         String jsonResponse = null;
