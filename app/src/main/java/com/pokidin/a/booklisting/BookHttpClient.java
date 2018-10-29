@@ -36,8 +36,8 @@ public class BookHttpClient {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
+            urlConnection.setReadTimeout(10000); // 10 sec
+            urlConnection.setConnectTimeout(15000); // 15 sec
             urlConnection.connect();
 
             if (urlConnection.getResponseCode() == 200) {

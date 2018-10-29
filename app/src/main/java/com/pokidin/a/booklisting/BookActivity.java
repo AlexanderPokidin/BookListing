@@ -5,6 +5,7 @@ import android.content.Loader;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -73,7 +74,8 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder builder = baseUri.buildUpon();
         builder.appendQueryParameter("q", SEARCH_WORD);
         builder.appendQueryParameter("maxResults", SEARCH_NUMBER);
-        return new BookLoader(this, baseUri.toString());
+        Log.d(TAG, "builder: " + builder);
+        return new BookLoader(this, builder.toString());
     }
 
     @Override
