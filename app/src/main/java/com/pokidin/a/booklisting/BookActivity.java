@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,12 +23,27 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String SEARCH_WORD = "Android";
     private static final String SEARCH_NUMBER = "10";
 
+    private String titleOfTheBook;
+
     private BookAdapter mBookAdapter;
+    private EditText mSearchWord;
+    private Button mSearchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+
+        mSearchWord = findViewById(R.id.et_search);
+
+        mSearchButton = findViewById(R.id.btn_search);
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                titleOfTheBook = mSearchWord.getText().toString();
+
+            }
+        });
 
 
         ListView bookListView = findViewById(R.id.list);
@@ -66,7 +83,6 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
 
         return fakeBooks;
     }
-
 
     @Override
     public Loader<List<Book>> onCreateLoader(int id, Bundle args) {

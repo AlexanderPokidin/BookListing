@@ -56,6 +56,7 @@ public class BookJsonParser {
         String jsonResponse = null;
         try {
             jsonResponse = BookHttpClient.makeHttpRequest(url);
+            Log.d(TAG, "jsonResponse: " + jsonResponse);
         } catch (IOException ex) {
             Log.e(TAG, "Problem making the HTTP request.", ex);
         }

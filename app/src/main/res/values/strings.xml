@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Book Listing</string>
+    <string name="what_book_are_you_looking_for">What book are you looking for?</string>
 </resources>
