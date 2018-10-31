@@ -48,7 +48,7 @@ public class BookJsonParser {
                 }
             }
         } catch (JSONException ex) {
-            Log.e(TAG, "Problem parsing the earthquake JSON results", ex);
+            Log.e(TAG, "Problem parsing the book JSON results", ex);
         }
         return books;
     }
