@@ -33,11 +33,14 @@ public class BookJsonParser {
                     String title = bookInfo.getString("title");
                     String publisher = bookInfo.getString("publisher");
                     String date = bookInfo.getString("publishedDate");
-                    String description = bookInfo.getString("description");
+                    String description = "";
+                    if (bookInfo.getString("description") != null) {
+                        description = bookInfo.getString("description");
+                    }
                     JSONArray authorsArray = bookInfo.getJSONArray("authors");
                     ArrayList<String> authorsList = new ArrayList<>();
-                    for (int j = 0; j < authorsArray.length(); i++) {
-                        String author = authorsArray.getString(i);
+                    for (int j = 0; j < authorsArray.length(); j++) {
+                        String author = authorsArray.getString(j);
                         authorsList.add(author);
                     }
                     Book book = new Book(title, publisher, date, description, authorsList);

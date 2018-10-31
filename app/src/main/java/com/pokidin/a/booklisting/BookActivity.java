@@ -20,7 +20,7 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String BOOK_REQUEST_URL = "https://www.googleapis.com/books/v1/volumes";
     private static final int BOOK_LOADER_ID = 1;
 
-    private static final String SEARCH_WORD = "Android";
+    private static final String SEARCH_WORD = "Java";
     private static final String SEARCH_NUMBER = "10";
 
     private String titleOfTheBook;
