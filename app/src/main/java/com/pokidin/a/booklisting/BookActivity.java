@@ -20,7 +20,7 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String BOOK_REQUEST_URL = "https://www.googleapis.com/books/v1/volumes";
     private static final int BOOK_LOADER_ID = 1;
 
-    private static final String SEARCH_WORD = "Java";
+    private static final String SEARCH_WORD = "Android";
     private static final String SEARCH_NUMBER = "10";
 
     private String titleOfTheBook;
@@ -70,16 +70,16 @@ public class BookActivity extends AppCompatActivity implements LoaderManager.Loa
         authors.add("author101");
         authors.add("author202");
         authors.add("author303");
-        fakeBooks.add(new Book("title00", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title01", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title02", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title03", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title04", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title05", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title06", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title07", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title08", "publisher", "202", "description", authors));
-        fakeBooks.add(new Book("title09", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title00", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title01", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title02", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title03", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title04", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title05", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title06", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title07", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title08", "publisher", "202", "description", authors));
+//        fakeBooks.add(new Book("title09", "publisher", "202", "description", authors));
 
         return fakeBooks;
     }

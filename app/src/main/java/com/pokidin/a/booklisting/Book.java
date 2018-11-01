@@ -10,11 +10,11 @@ public class Book {
     private String description;
     private List<String> authors;
 
-    public Book(String title, String publisher, String publishedDate, String description, List<String> authors) {
+    public Book(String title, String publisher, String publishedDate, List<String> authors) {
         this.title = title;
         this.publisher = publisher;
         this.publishedDate = publishedDate;
-        this.description = description;
+//        this.description = description;
         this.authors = authors;
     }
 
