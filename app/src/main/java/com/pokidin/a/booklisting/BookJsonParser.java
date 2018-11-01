@@ -34,19 +34,17 @@ public class BookJsonParser {
                     String publisher = bookInfo.getString("publisher");
 
                     String date = checkKeyWord(bookInfo, "publishedDate");
-//                            bookInfo.getString("publishedDate");
+                    String description = checkKeyWord(bookInfo, "description");
 
-//                    String description = "";
-//                    if (bookInfo.getString("description") != null) {
-//                        description = bookInfo.getString("description");
-//                    }
-                    JSONArray authorsArray = bookInfo.getJSONArray("authors");
                     ArrayList<String> authorsList = new ArrayList<>();
-                    for (int j = 0; j < authorsArray.length(); j++) {
-                        String author = authorsArray.getString(j);
-                        authorsList.add(author);
+                    if (bookInfo.has("authors")) {
+                        JSONArray authorsArray = bookInfo.getJSONArray("authors");
+                        for (int j = 0; j < authorsArray.length(); j++) {
+                            String author = authorsArray.getString(j);
+                            authorsList.add(author);
+                        }
                     }
-                    Book book = new Book(title, publisher, date, authorsList);
+                    Book book = new Book(title, publisher, date, description, authorsList);
                     books.add(book);
                 }
             }
@@ -70,12 +68,10 @@ public class BookJsonParser {
     }
 
     private static String checkKeyWord(JSONObject jsonObject, String keyWord) throws JSONException {
-        String jsonAnswer;
         if (jsonObject.has(keyWord)) {
-            jsonAnswer = jsonObject.getString(keyWord);
-            return jsonAnswer;
+            return jsonObject.getString(keyWord);
         } else {
-            return jsonAnswer = "";
+            return null;
         }
     }
 }
