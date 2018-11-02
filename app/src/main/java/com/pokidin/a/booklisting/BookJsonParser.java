@@ -30,6 +30,8 @@ public class BookJsonParser {
                 for (int i = 0; i < booksArray.length(); i++) {
                     JSONObject currentBook = booksArray.getJSONObject(i);
                     JSONObject bookInfo = currentBook.getJSONObject("volumeInfo");
+
+                    // TODO Use checkKeyWord() for all keywords
                     String title = bookInfo.getString("title");
                     String publisher = bookInfo.getString("publisher");
 
@@ -67,6 +69,7 @@ public class BookJsonParser {
         return extractDataFromJson(jsonResponse);
     }
 
+    // TODO Rename checkKeyWord() method
     private static String checkKeyWord(JSONObject jsonObject, String keyWord) throws JSONException {
         if (jsonObject.has(keyWord)) {
             return jsonObject.getString(keyWord);
